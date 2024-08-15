@@ -377,12 +377,21 @@ nav a:hover {
     }
 
     .wnetrze-zdjecia {
-        margin: 0 auto;
+        margin: 0 auto; /* Wyśrodkowanie zdjęć */
+        max-width: 100%; /* Dopasowanie szerokości */
+        display: flex;
+        justify-content: center; /* Wyśrodkowanie zawartości wewnątrz */
+    }
+
+    .wnetrze-opis img {
+        max-width: 100%; /* Obrazy zajmują maksymalną szerokość kontenera */
+        height: auto;
     }
 
     .text-wnetrze {
-        margin: 0;
+        margin: 20px auto; /* Wyśrodkowanie tekstu */
         max-width: 100%;
+        padding: 0 20px; /* Dodanie odstępu od krawędzi */
     }
 
     /* Sekcja Jedzenie: Zdjęcia nad tekstem */
@@ -392,12 +401,21 @@ nav a:hover {
     }
 
     .jedzenie-zdjecia {
-        margin: 0 auto;
+        margin: 0 auto; /* Wyśrodkowanie zdjęć */
+        max-width: 100%; /* Dopasowanie szerokości */
+        display: flex;
+        justify-content: center; /* Wyśrodkowanie zawartości wewnątrz */
+    }
+
+    .jedzenie-opis img {
+        max-width: 100%; /* Obrazy zajmują maksymalną szerokość kontenera */
+        height: auto;
     }
 
     .text-jedzenie {
-        margin: 0;
+        margin: 20px auto; /* Wyśrodkowanie tekstu */
         max-width: 100%;
+        padding: 0 20px; /* Dodanie odstępu od krawędzi */
     }
 
     /* Dostosowanie wielkości fontów */
