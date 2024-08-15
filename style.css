@@ -202,9 +202,11 @@ nav a:hover {
 /* wnetrze */
 .wnetrze {
     display: flex;
+    flex-wrap: wrap; /* Pozwala na zawijanie elementów */
     justify-content: space-between;
     align-items: center;
     margin: 40px 0;
+    padding: 20px; /* Dodaj padding dla lepszego wyglądu na mniejszych ekranach */
 }
 
 .text-wnetrze {
@@ -213,21 +215,23 @@ nav a:hover {
     flex: 1;
     padding-left: 20px;
     margin-left: 6%;
+    max-width: 600px; /* Maksymalna szerokość tekstu */
+    margin-bottom: 20px; /* Dodaj margines dolny na mniejszych ekranach */
 }
 
 .wnetrze-zdjecia {
     flex: 1;
     position: relative;
     display: grid;
+    grid-template-columns: 1fr; /* Ustawienie pojedynczej kolumny dla zdjęć */
     gap: 10px;
 }
 
-.wnetrze-opis{
+.wnetrze-opis {
     position: relative;
     height: 300px;
-    width: 600px;
-    margin-right: 5px;
-    overflow: hidden; /* Ukrywa powiększone części zdjęcia */
+    width: 100%; /* Zmień szerokość na 100%, aby dostosowywała się do rodzica */
+    overflow: hidden;
 }
 
 /* jedzenie */
@@ -236,6 +240,7 @@ nav a:hover {
     align-items: center;
     margin: 40px 0;
 }
+
 
 .text-jedzenie {
     font-family: 'Raleway';
