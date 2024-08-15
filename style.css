@@ -15,366 +15,6 @@ body {
 /* menu */
 nav {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 20px;
-    background-color: #333;
-    color: #fff;
-}
-
-nav a {
-    margin: 0 20px;
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    font-family: 'Raleway', Arial, sans-serif;
-    font-size: 20px;
-}
-
-nav .nav-items {
-    display: none;
-}
-
-
-
-/* Styl dla małych ekranów */
-@media (max-width: 768px) {
-    /* Tylko logo wyświetlane dla małych ekranów */
-    nav .nav-items {
-        display: none;
-    }
-
-    nav .logo img {
-        height: 50px; /* Dostosuj wysokość logo */
-    }
-}
-
-/* usprawnienia menu */
-.nav-items a {
-    margin: 0 100px;
-}
-
-
-nav a:hover {
-    color: #000;
-}
-
-/* logo */
-.logo {
-    position: absolute;
-    left: 50%;
-    top: 10%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-.logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-.hero {
-    background: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/302693434_936293063951248_598327703134462879_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=1TSJX0S5wbYQ7kNvgGjdjSz&_nc_ht=scontent-fra5-1.xx&oh=00_AYCxe7Y8l_aqDRane-NcabjX2birIoWznbgTsS0YGLoszg&oe=66BF8927') no-repeat center center/cover;
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    text-align: center;
-}
-
-.hero-text h1 {
-    font-size: 120px;
-    color: #eeebe8;
-    margin: 0;
-}
-
-.hero-text p {
-    font-size: 24px;
-}
-
-.description {
-    padding: 60px 20px;
-    text-align: center;
-}
-
-.description h2 {
-    font-size: 32px;
-}
-
-.description p {
-    font-family: 'Raleway';
-    font-size: 18px;
-    max-width: 800px;
-    margin: 20px auto;
-}
-
-/* stopka */
-.footer {
-    background-color: #eeebe8; /* Kolor tła stopki */
-    padding: 1px;
-    font-family: 'Raleway', sans-serif;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer-left, .footer-center, .footer-right {
-    flex: 1;
-    text-align: center;
-}
-
-.footer-left {
-    text-align: left;
-}
-
-.footer-center {
-    text-align: center;
-}
-
-.footer-right {
-    text-align: right;
-}
-
-.footer p {
-    margin: 5px 0;
-    color: #000;
-}
-
-.footer-logo {
-    object-fit: cover;
-    border-radius: 50%;
-    width: 200px;
-    height: auto;
-}
-
-.footer-social a {
-    color: #000;
-    font-size: 24px;
-    margin: 0 10px;
-    text-decoration: none;
-}
-
-.footer-social a:hover {
-    color: #8e745c;
-}
-
-.footer i {
-    margin-right: 10px;
-    color: #8e745c;
-}
-
-
-/* galeria zdjęć */
-#zdjecia1 {
-    scroll-margin-top: 80px; /* Dostosuj wysokość do swoich potrzeb */
-}
-
-.zdjecia1 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding: 20px;
-}
-
-.opis-zdjecia1 {
-    position: relative;
-    width: 100%;
-    padding-top: 66.67%;
-    overflow: hidden;
-}
-
-.opis-zdjecia1 img {
-    position: absolute;
-    transition: transform 0.3s ease-in-out;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.opis-zdjecia1:hover img {
-    transform: scale(1.1);
-}
-
-/* wnetrze */
-.wnetrze {
-    display: flex;
-    flex-wrap: wrap; /* Pozwala na zawijanie elementów */
-    justify-content: space-between;
-    align-items: center;
-    margin: 40px 0;
-    padding: 20px; /* Dodaj padding dla lepszego wyglądu na mniejszych ekranach */
-}
-
-.text-wnetrze {
-    font-family: 'Raleway';
-    font-size: 20px;
-    flex: 1;
-    margin-left: 200px;
-    max-width: 600px; /* Maksymalna szerokość tekstu */
-    margin-bottom: 20px; /* Dodaj margines dolny na mniejszych ekranach */
-}
-
-.wnetrze-zdjecia {
-    flex: 1;
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr; /* Ustawienie pojedynczej kolumny dla zdjęć */
-    gap: 10px;
-}
-
-.wnetrze-opis {
-    position: relative;
-    height: 380px;
-    width: 80%; /* Zmień szerokość na 100%, aby dostosowywała się do rodzica */
-    overflow: hidden;
-}
-
-/* Media queries dla mniejszych ekranów */
-@media (max-width: 1024px) {
-    .wnetrze {
-        flex-direction: column; /* Ustawienie kolumny na mniejszych ekranach */
-        align-items: flex-start;
-    }
-
-    .wnetrze-zdjecia {
-        grid-template-columns: 1fr; /* Ustawienie jednej kolumny na mniejszych ekranach */
-    }
-
-    .text-wnetrze {
-        margin-left: 0;
-        padding-left: 0;
-        text-align: center; /* Wyśrodkowanie tekstu na mniejszych ekranach */
-    }
-}
-
-@media (max-width: 768px) {
-    .text-wnetrze {
-        font-size: 18px; /* Zmniejszenie rozmiaru czcionki dla małych ekranów */
-    }
-
-    .wnetrze-opis {
-        height: 200px; /* Zmniejszenie wysokości zdjęć na mniejszych ekranach */
-    }
-}
-
-@media (max-width: 480px) {
-    .wnetrze-opis {
-        height: 150px; /* Jeszcze mniejsze zdjęcia na bardzo małych ekranach */
-    }
-
-    .text-wnetrze {
-        font-size: 16px;
-        margin-bottom: 10px;
-    }
-}
-
-/* jedzenie */
-.jedzenie {
-    display: flex;
-    flex-wrap: wrap; /* Umożliwia zawijanie elementów */
-    justify-content: space-between;
-    align-items: center;
-    margin: 40px 0;
-    padding: 20px; /* Dodaj padding, aby poprawić układ na mniejszych ekranach */
-}
-
-.text-jedzenie {
-    font-family: 'Raleway';
-    font-size: 20px;
-    flex: 1;
-    padding-right: 200px;
-    max-width: 600px; /* Maksymalna szerokość tekstu */
-    margin-bottom: 20px; /* Margines dolny dla mniejszych ekranów */
-}
-
-.jedzenie-zdjecia {
-    flex: 1;
-    position: relative;
-    margin-left: 200px;
-    display: grid;
-    grid-template-columns: 1fr; /* Ustawienie jednej kolumny dla zdjęć */
-    gap: px;
-}
-
-.jedzenie-opis {
-    position: relative;
-    height: 400px;
-    width: 80%; /* Zmiana szerokości na 100% */
-    overflow: hidden;
-}
-
-/* Media queries dla mniejszych ekranów */
-@media (max-width: 1024px) {
-    .jedzenie {
-        flex-direction: column; /* Ustawienie układu w kolumnie */
-        align-items: flex-start;
-    }
-
-    .jedzenie-zdjecia {
-        grid-template-columns: 1fr; /* Ustawienie jednej kolumny na mniejszych ekranach */
-    }
-
-    .text-jedzenie {
-        margin-left: 0;
-        padding-left: 0;
-        text-align: center; /* Wyśrodkowanie tekstu na mniejszych ekranach */
-    }
-}
-
-@media (max-width: 768px) {
-    .text-jedzenie {
-        font-size: 18px; /* Zmniejszenie czcionki dla małych ekranów */
-    }
-
-    .jedzenie-opis {
-        height: 200px; /* Zmniejszenie wysokości zdjęć na mniejszych ekranach */
-    }
-}
-
-@media (max-width: 480px) {
-    .jedzenie-opis {
-        height: 150px; /* Zmniejszenie wysokości zdjęć na bardzo małych ekranach */
-    }
-
-    .text-jedzenie {
-        font-size: 16px;
-        margin-bottom: 10px;
-    }
-}
-
-
-
-/* przejscia */
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: 'Italianno', cursive;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-/* menu */
-nav {
-    display: flex;
     justify-content: space-between; /* Spread the items out evenly */
     align-items: center;
     background-color: #eeebe8;
@@ -573,7 +213,8 @@ nav a:hover {
     font-family: 'Raleway';
     font-size: 20px;
     flex: 1;
-    margin-right: 200px;
+    margin-left: 200px;
+    margin-right: 10%;
     max-width: 600px; /* Maksymalna szerokość tekstu */
     margin-bottom: 20px; /* Dodaj margines dolny na mniejszych ekranach */
 }
@@ -582,6 +223,7 @@ nav a:hover {
     flex: 1;
     position: relative;
     display: grid;
+    grid-template-columns: 1fr; /* Ustawienie pojedynczej kolumny dla zdjęć */
     gap: 10px;
 }
 
@@ -592,115 +234,39 @@ nav a:hover {
     overflow: hidden;
 }
 
-/* Media queries dla mniejszych ekranów */
-@media (max-width: 1024px) {
-    .wnetrze {
-        flex-direction: column; /* Ustawienie kolumny na mniejszych ekranach */
-        align-items: flex-start;
-    }
-
-    .wnetrze-zdjecia {
-        grid-template-columns: 1fr; /* Ustawienie jednej kolumny na mniejszych ekranach */
-    }
-
-    .text-wnetrze {
-        margin-left: 0;
-        padding-left: 0;
-        text-align: center; /* Wyśrodkowanie tekstu na mniejszych ekranach */
-    }
-}
-
-@media (max-width: 768px) {
-    .text-wnetrze {
-        font-size: 18px; /* Zmniejszenie rozmiaru czcionki dla małych ekranów */
-    }
-
-    .wnetrze-opis {
-        height: 200px; /* Zmniejszenie wysokości zdjęć na mniejszych ekranach */
-    }
-}
-
-@media (max-width: 480px) {
-    .wnetrze-opis {
-        height: 150px; /* Jeszcze mniejsze zdjęcia na bardzo małych ekranach */
-    }
-
-    .text-wnetrze {
-        font-size: 16px;
-        margin-bottom: 10px;
-    }
-}
-
 /* jedzenie */
 .jedzenie {
     display: flex;
-    flex-wrap: wrap; /* Pozwala na zawijanie elementów */
+    flex-wrap: wrap; /* Umożliwia zawijanie elementów */
     justify-content: space-between;
     align-items: center;
     margin: 40px 0;
-    padding: 20px; /* Dodaj padding dla lepszego wyglądu na mniejszych ekranach */
+    padding: 20px; /* Dodaj padding, aby poprawić układ na mniejszych ekranach */
 }
 
 .text-jedzenie {
     font-family: 'Raleway';
     font-size: 20px;
     flex: 1;
-    margin-left: 0px;
+    padding-right: 200px;
     max-width: 600px; /* Maksymalna szerokość tekstu */
-    margin-bottom: 20px; /* Dodaj margines dolny na mniejszych ekranach */
+    margin-bottom: 20px; /* Margines dolny dla mniejszych ekranów */
 }
 
 .jedzenie-zdjecia {
     flex: 1;
     position: relative;
+    margin-left: 200px;
     display: grid;
-    gap: 10px;
+    grid-template-columns: 1fr; /* Ustawienie jednej kolumny dla zdjęć */
+    gap: px;
 }
 
 .jedzenie-opis {
     position: relative;
-    height: 380px;
-    width: 80%; /* Zmień szerokość na 100%, aby dostosowywała się do rodzica */
+    height: 400px;
+    width: 80%; /* Zmiana szerokości na 100% */
     overflow: hidden;
-}
-
-/* Media queries dla mniejszych ekranów */
-@media (max-width: 1024px) {
-    .jedzenie {
-        flex-direction: column; /* Ustawienie kolumny na mniejszych ekranach */
-        align-items: flex-start;
-    }
-
-    .jedzenie-zdjecia {
-        grid-template-columns: 1fr; /* Ustawienie jednej kolumny na mniejszych ekranach */
-    }
-
-    .text-jedzenie {
-        margin-left: 0;
-        padding-left: 0;
-        text-align: center; /* Wyśrodkowanie tekstu na mniejszych ekranach */
-    }
-}
-
-@media (max-width: 768px) {
-    .text-jedzenie {
-        font-size: 18px; /* Zmniejszenie rozmiaru czcionki dla małych ekranów */
-    }
-
-    .jedzenie-opis {
-        height: 200px; /* Zmniejszenie wysokości zdjęć na mniejszych ekranach */
-    }
-}
-
-@media (max-width: 480px) {
-    .jedzenie-opis {
-        height: 150px; /* Jeszcze mniejsze zdjęcia na bardzo małych ekranach */
-    }
-
-    .text-jedzenie {
-        font-size: 16px;
-        margin-bottom: 10px;
-    }
 }
 
 /* przewijanie i strzałki */
@@ -793,4 +359,53 @@ nav a:hover {
     padding-left: 20px; /* wewnętrzne odstępy od treści */
     padding-right: 20px;
   }
-  
+
+
+/* RESPONSYWNE MEDIA QUERIES */
+
+/* Na mniejszych ekranach (poniżej 768px) */
+@media (max-width: 768px) {
+    /* Ukryj elementy nawigacyjne, zostaw logo */
+    .nav-items {
+        display: none;
+    }
+
+    /* Sekcja Wnętrze: Zdjęcia nad tekstem */
+    .wnetrze {
+        display: block;
+        text-align: center;
+    }
+
+    .wnetrze-zdjecia {
+        margin: 0 auto;
+    }
+
+    .text-wnetrze {
+        margin: 0;
+        max-width: 100%;
+    }
+
+    /* Sekcja Jedzenie: Zdjęcia nad tekstem */
+    .jedzenie {
+        display: block;
+        text-align: center;
+    }
+
+    .jedzenie-zdjecia {
+        margin: 0 auto;
+    }
+
+    .text-jedzenie {
+        margin: 0;
+        max-width: 100%;
+    }
+
+    /* Dostosowanie wielkości fontów */
+    .hero-text h1 {
+        font-size: 60px;
+    }
+
+    .hero-text p {
+        font-size: 18px;
+    }
+}
