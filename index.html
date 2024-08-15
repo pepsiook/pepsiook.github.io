@@ -22,6 +22,11 @@
         <div class="logo">
             <img src="images/logo.png" alt="ad">
         </div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <div class="nav-items">
             <a href="#">Strona główna</a>
             <a href="#zdjecia1">Galeria</a>
@@ -29,19 +34,16 @@
             <a href="#">Kontakt</a>
         </div>
     </nav>
-
     <!-- start -->
     <section class="hero">
         <div class="hero-text">
             <h1>Willa AD 1894</h1>
         </div>
     </section>
-
     <!-- opis -->
     <section class="description">
         <p>Willa A.D. 1894 usytuowana jest w spokojnej okolicy, 400 metrów od centrum Łeby. Obiekt mieści się w budynku z XIX wieku, będącym przykładem typowej dla regionu ówczesnej architektury. We wszystkich pokojach dostępne jest bezpłatne WiFi. Na miejscu można wypożyczyć rowery.</p>
     </section>
-
 
     <!-- galeria zdjęć 1-->
     <section id="zdjecia1" class="zdjecia1">
@@ -63,7 +65,7 @@
     </section>
     
     <!-- sekcja wnetrze -->
-    <section class="wnetrze">
+    <section id="wnetrze" class="wnetrze">
         <div class="text-wnetrze">
             <h2>Wnętrze</h2>
             <p>Każdy pokój w obiekcie Willa A.D. 1894 mieści łazienkę z prysznicem. Wyposażenie obejmuje także telewizor z płaskim ekranem i sprzęt plażowy.</p>
@@ -102,7 +104,7 @@
     </section>
 
     <!-- sekcja jedzenie -->
-    <section class="jedzenie">
+    <section id="jedzenie" class="jedzenie">
         <div class="jedzenie-zdjecia breakfast-slider">
             <div class="jedzenie-opis">
                 <a href="images/jedz1.jpg" data-fancybox="3">
@@ -224,5 +226,16 @@
     
     
 
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navItems = document.querySelector('.nav-items');
+    
+        menuToggle.addEventListener('click', () => {
+            navItems.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+    });
+    </script>
 </body>
 </html>
