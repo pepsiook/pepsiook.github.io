@@ -15,14 +15,15 @@ body {
 /* menu */
 nav {
     display: flex;
-    justify-content: space-between; /* Spread the items out evenly */
+    justify-content: space-between;
     align-items: center;
     background-color: #eeebe8;
-    padding: 20px;
+    padding: 10px 20px; /* Zmniejszone paddingi */
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    height: 60px; /* Cieńszy pasek nawigacyjny */
 }
 
 nav a {
@@ -53,12 +54,15 @@ nav a:hover {
 .logo {
     position: absolute;
     left: 50%;
-    top: 10%;
     transform: translateX(-50%);
-    width: 100px;
-    height: 100px;
+    width: 160px; /* Zwiększona wielkość logo */
+    height: 160px;
     border-radius: 50%;
     overflow: hidden;
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    top: 0%; /* Pozycja loga – wystaje za pasek nawigacyjny */
 }
 
 .logo img {
@@ -407,12 +411,39 @@ nav a:hover {
         display: none;
     }
 
+    nav {
+        justify-content: center; /* Wyśrodkowanie całej nawigacji na telefonach */
+    }
+
+    .logo {
+        position:static; /* Usuń pozycjonowanie absolutne na mniejszych ekranach */
+        transform: none;   /* Usuń przesunięcie na mniejszych ekranach */
+        width: 120px; /* Mniejsze logo na telefonach */
+        height: 120px;
+        margin-top: 10%; /* Resetuj top */
+    }
+
     /* Sekcja Wnętrze: Zdjęcia nad tekstem */
     .wnetrze {
         display: block;
         text-align: center;
         margin: 20px 0; /* Zmniejszony margines */
         padding: 10px; /* Zmniejszony padding */
+    }
+
+    /* Zmniejszenie obrazu tła hero na mniejszych ekranach */
+    .hero {
+        height: 50vh; /* Zmniejsz wysokość sekcji hero */
+        background-size: contain; /* Dopasowanie obrazu tła do mniejszego ekranu */
+    }
+
+    /* Dostosowanie wielkości fontów w hero-text */
+    .hero-text h1 {
+        font-size: 40px; /* Zmniejszona wielkość fontu dla nagłówka */
+    }
+
+    .hero-text p {
+        font-size: 18px; /* Zmniejszona wielkość fontu dla tekstu */
     }
 
     .wnetrze-zdjecia {
