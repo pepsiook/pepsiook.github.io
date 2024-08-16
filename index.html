@@ -21,12 +21,18 @@
 
 </head>
 <body>
-    <!-- nagłówek -->
     <nav>
         <div class="logo">
             <img src="images/logo.png" alt="ad">
         </div>
-        <div class="nav-items">
+    
+        <!-- Ikona dla menu mobilnego -->
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    
+        <!-- Menu nawigacyjne -->
+        <div class="nav-items" id="nav-items">
             <a href="#">Strona główna</a>
             <a href="#zdjecia1">Galeria</a>
             <a href="#">Rezerwacja</a>
@@ -290,6 +296,41 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             </script>
             
+
+         <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navItems = document.querySelector('.nav-items');
+
+    // Funkcja do przełączenia menu
+    function toggleMenu() {
+        if (navItems.classList.contains('active')) {
+            // Przewiń do wysokości obecnej
+            navItems.style.height = `${navItems.scrollHeight}px`;
+            // Poczekaj na kończenie animacji
+            requestAnimationFrame(() => {
+                navItems.style.height = '0';
+                // Usuń klasę aktywności po zakończeniu animacji
+                setTimeout(() => navItems.classList.remove('active'), 300);
+            });
+        } else {
+            // Dodaj klasę aktywności i ustaw wysokość na automatyczną
+            navItems.classList.add('active');
+            navItems.style.height = 'auto';
+            // Resetuj wysokość na bazową wartość
+            const height = navItems.scrollHeight + 'px';
+            navItems.style.height = '0';
+            requestAnimationFrame(() => {
+                navItems.style.height = height;
+            });
+        }
+    }
+
+    // Dodaj nasłuchiwacz kliknięć do przycisku menu
+    menuToggle.addEventListener('click', toggleMenu);
+});
+
+        </script>
             
 
 

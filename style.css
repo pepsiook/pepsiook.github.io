@@ -21,6 +21,8 @@ nav {
     padding: 10px 20px; /* Zmniejszone paddingi */
     position: fixed;
     width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     top: 0;
     z-index: 1000;
     height: 60px; /* Cieńszy pasek nawigacyjny */
@@ -30,6 +32,8 @@ nav a {
     margin: 0 20px;
     text-decoration: none;
     color: #333;
+    margin-left: auto;
+    margin-right: auto;
     font-weight: bold;
     font-family: 'Raleway', Arial, sans-serif;
     font-size: 20px;
@@ -38,7 +42,25 @@ nav a {
 .nav-items {
     display: flex;
     justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
     flex-grow: 1;
+}
+
+/* menu mobilne */
+.menu-toggle {
+    display: none; /* Domyślnie ukryta */
+    cursor: pointer;
+    font-size: 24px;
+    position: absolute;
+    left: 20px; /* Ustawienie ikony całkowicie po lewej stronie */
+    top: 20px;
+    z-index: 1001; /* Wyższy z-index, aby pojawiła się nad innymi elementami */
+}
+
+.menu-toggle i {
+    font-size: 30px; /* Wielkość ikony */
+    color: #000; /* Kolor ikony (czarny) */
 }
 
 /* usprawnienia menu */
@@ -53,7 +75,7 @@ nav a:hover {
 /* logo */
 .logo {
     position: absolute;
-    left: 50%;
+    left: 49%;
     transform: translateX(-50%);
     width: 160px; /* Zwiększona wielkość logo */
     height: 160px;
@@ -73,7 +95,7 @@ nav a:hover {
 }
 
 .hero {
-    background: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/302693434_936293063951248_598327703134462879_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=1TSJX0S5wbYQ7kNvgGjdjSz&_nc_ht=scontent-fra5-1.xx&oh=00_AYCxe7Y8l_aqDRane-NcabjX2birIoWznbgTsS0YGLoszg&oe=66BF8927') no-repeat center center/cover;
+    background: url("images/background.jpg") no-repeat center center/cover;
     height: 80vh;
     display: flex;
     justify-content: center;
@@ -408,7 +430,44 @@ nav a:hover {
 @media (max-width: 768px) {
     /* Ukryj elementy nawigacyjne, zostaw logo */
     .nav-items {
-        display: none;
+        display: none; /* Ukrycie menu */
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Poniżej nagłówka */
+        left: 20px; /* Dopasowanie pozycji menu pod ikoną */
+        background-color: #eeebe8;
+        width: 80%; /* Zmniejszenie szerokości menu */
+        height: 0; /* Początkowa wysokość 0, aby umożliwić animację */
+        overflow: hidden;
+        text-align: left; /* Linki w menu będą wyrównane do lewej */
+        padding-left: 20px;
+        transition: height 0.3s ease; /* Animacja rozwijania menu */
+    }
+
+    .menu-toggle {
+        display: block; /* ikona menu */
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 1001; /* Zapewnienie, że ikona hamburgera będzie nad innymi elementami */
+    }
+
+    /* wyswietlanie menu */
+    .nav-items.active {
+        height: auto; /* Automatyczne dopasowanie wysokości do zawartości */
+        width: 30%;
+        display: flex; /* Pokazanie menu */
+    }
+
+    /* Dostosowanie linków menu */
+    .nav-items a {
+        margin: 0; /* Usuń margines między pozycjami w menu */
+        padding: 10px 0; /* Dodatkowy padding dla lepszej przestrzeni między linkami */
+        font-size: 12px; /* Większa czcionka na urządzeniach mobilnych */
+        text-align: left;
+        border-bottom: 1px solid #ccc; /* Dodanie cienkiej linii oddzielającej elementy menu */
     }
 
     nav {
@@ -416,10 +475,13 @@ nav a:hover {
     }
 
     .logo {
-        position:static; /* Usuń pozycjonowanie absolutne na mniejszych ekranach */
+        position:relative; /* Usuń pozycjonowanie absolutne na mniejszych ekranach */
         transform: none;   /* Usuń przesunięcie na mniejszych ekranach */
         width: 120px; /* Mniejsze logo na telefonach */
         height: 120px;
+        justify-content: center;
+        align-items: center;
+        left: -3%;
         margin-top: 10%; /* Resetuj top */
     }
 
@@ -434,7 +496,7 @@ nav a:hover {
     /* Zmniejszenie obrazu tła hero na mniejszych ekranach */
     .hero {
         height: 50vh; /* Zmniejsz wysokość sekcji hero */
-        background-size: contain; /* Dopasowanie obrazu tła do mniejszego ekranu */
+        background-size: cover; /* Dopasowanie obrazu tła do mniejszego ekranu */
     }
 
     /* Dostosowanie wielkości fontów w hero-text */
@@ -511,5 +573,28 @@ nav a:hover {
 
     .hero-text p {
         font-size: 18px;
+    }
+
+    /* Dostosowanie stopki */
+    .footer-content {
+        flex-direction: column; /* Ustawienie elementów w kolumnie na mniejszych ekranach */
+        align-items: center; /* Wyśrodkowanie elementów */
+    }
+
+    .footer-left, .footer-center, .footer-right {
+        text-align: center; /* Wyśrodkowanie wszystkich sekcji */
+        margin-bottom: 20px; /* Margines dolny dla separacji elementów */
+    }
+
+    .footer-logo {
+        width: 120px; /* Dalsze zmniejszenie logo */
+    }
+
+    .footer p {
+        font-size: 12px; /* Zmniejszenie rozmiaru tekstu */
+    }
+
+    .footer-social a {
+        font-size: 18px; /* Dalsze zmniejszenie ikon */
     }
 }
