@@ -411,6 +411,8 @@ nav a:hover {
     .wnetrze {
         display: block;
         text-align: center;
+        margin: 20px 0; /* Zmniejszony margines */
+        padding: 10px; /* Zmniejszony padding */
     }
 
     .wnetrze-zdjecia {
@@ -420,8 +422,15 @@ nav a:hover {
         justify-content: center; /* Wyśrodkowanie zawartości wewnątrz */
     }
 
+    .wnetrze-opis {
+        position: relative;
+        height: 250px; /* Mniejsza wysokość dla telefonów */
+        width: 100%; /* Szerokość na 100%, aby była równa */
+        overflow: hidden;
+    }
+
     .wnetrze-opis img {
-        max-width: 100%; /* Obrazy zajmują maksymalną szerokość kontenera */
+        max-width: 100%;
         height: auto;
     }
 
@@ -435,6 +444,8 @@ nav a:hover {
     .jedzenie {
         display: block;
         text-align: center;
+        margin: 20px 0; /* Zmniejszony margines */
+        padding: 10px; /* Zmniejszony padding */
     }
 
     .jedzenie-zdjecia {
@@ -444,8 +455,15 @@ nav a:hover {
         justify-content: center; /* Wyśrodkowanie zawartości wewnątrz */
     }
 
+    .jedzenie-opis {
+        position: relative;
+        height: 250px; /* Mniejsza wysokość dla telefonów */
+        width: 100%; /* Szerokość na 100%, aby była równa */
+        overflow: hidden;
+    }
+
     .jedzenie-opis img {
-        max-width: 100%; /* Obrazy zajmują maksymalną szerokość kontenera */
+        max-width: 100%;
         height: auto;
     }
 
