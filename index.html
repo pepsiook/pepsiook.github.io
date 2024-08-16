@@ -26,20 +26,20 @@
             <img src="images/logo.png" alt="ad">
         </div>
     
-        <!-- Ikona dla menu mobilnego -->
+        <!-- ikona menu mobilnego -->
         <div class="menu-toggle" id="menu-toggle">
             <i class="fas fa-bars"></i>
         </div>
     
-        <!-- Menu nawigacyjne -->
+        <!-- menu nawigacyjne -->
         <div class="nav-items" id="nav-items">
-            <a href="#">Strona główna</a>
+            <a href="#glowna">Strona główna</a>
             <a href="#zdjecia1">Galeria</a>
-            <a href="#">Rezerwacja</a>
-            <a href="#">Kontakt</a>
+            <a href="#rezerwacja">Rezerwacja</a>
+            <a href="#stopka">Kontakt</a>
         </div>
     </nav>
-    <section class="hero">
+    <section id="glowna" class="hero">
         <div class="hero-text">
             <h1>Willa AD 1894</h1>
         </div>
@@ -146,7 +146,7 @@
         </div>
     </section>
 
-    <!-- Sekcja rezerwacji -->
+    <!-- sekcja rezerwacji -->
     <section id="rezerwacja" class="rezerwacja">
         <div class="text-rezerwacja">
             <h2>Sprawdź dostępność i zarezerwuj pobyt przez booking.com!</h2>
@@ -157,7 +157,7 @@
     </section>
 
     <!-- stopka -->
-    <footer class="footer">
+    <footer id="stopka" class="footer">
         <div class="footer-content">
             <div class="footer-left">
                 <p><i class="fas fa-map-marker-alt"></i> ul. Powstańców Warszawy 35 A<br>84-360 Łeba</p>
@@ -178,105 +178,103 @@
     </footer>
 
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    function setupSlider(sliderClass, controlsClass) {
-        const slides = document.querySelectorAll(`.${sliderClass} .slide-image`);
-        const prevBtns = document.querySelectorAll(`.${controlsClass} .prev-slide`);
-        const nextBtns = document.querySelectorAll(`.${controlsClass} .next-slide`);
-        let currentSlide = 0;
-        let slideInterval;
+        document.addEventListener('DOMContentLoaded', function() {
+            function setupSlider(sliderClass, controlsClass) {
+                const slides = document.querySelectorAll(`.${sliderClass} .slide-image`);
+                const prevBtns = document.querySelectorAll(`.${controlsClass} .prev-slide`);
+                const nextBtns = document.querySelectorAll(`.${controlsClass} .next-slide`);
+                let currentSlide = 0;
+                let slideInterval;
 
-        function showSlide() {
-            slides.forEach((slide, index) => {
-                slide.classList.remove('active');
-                if (index === currentSlide) {
-                    slide.classList.add('active');
-                }
-            });
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide();
-        }
-
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide();
-        }
-
-        function startSlideShow() {
-            slideInterval = setInterval(nextSlide, 3000); // Zmiana co 3 sekundy
-        }
-
-        function stopSlideShow() {
-            clearInterval(slideInterval);
-        }
-
-        // Inicjalizacja slidera
-        showSlide();
-        startSlideShow(); // Rozpoczęcie automatycznego przewijania
-
-        nextBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                nextSlide();
-                stopSlideShow(); // Zatrzymanie automatycznego przewijania przy ręcznym kliknięciu
-                startSlideShow(); // Restart automatycznego przewijania po kliknięciu
-            });
-        });
-
-        prevBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                prevSlide();
-                stopSlideShow(); // Zatrzymanie automatycznego przewijania przy ręcznym kliknięciu
-                startSlideShow(); // Restart automatycznego przewijania po kliknięciu
-            });
-        });
-
-        // Funkcja do otwierania aktualnego zdjęcia w fancyboxie z możliwością przewijania
-        slides.forEach((slide, index) => {
-            slide.setAttribute('data-index', index);  // Przypisanie indeksu do każdego zdjęcia
-            slide.addEventListener('click', function(event) {
-                event.preventDefault();  // Zatrzymanie domyślnej akcji linków lub przycisków
-
-                // Stwórz listę zdjęć do przekazania do Fancyboxa
-                const imageList = [];
-                slides.forEach((slide, i) => {
-                    imageList.push({
-                        src: slide.parentElement.href,  // Pobranie href z elementu <a> nadrzędnego
-                        opts: {
-                            caption: slide.alt || '',
-                            thumb: slide.parentElement.href
+                function showSlide() {
+                    slides.forEach((slide, index) => {
+                        slide.classList.remove('active');
+                        if (index === currentSlide) {
+                            slide.classList.add('active');
                         }
+                    });
+                }
+
+                function nextSlide() {
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    showSlide();
+                }
+
+                function prevSlide() {
+                    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                    showSlide();
+                }
+
+                function startSlideShow() {
+                    slideInterval = setInterval(nextSlide, 3000); // Zmiana co 3 sekundy
+                }
+
+                function stopSlideShow() {
+                    clearInterval(slideInterval);
+                }
+
+                // Inicjalizacja slidera
+                showSlide();
+                startSlideShow(); // Rozpoczęcie automatycznego przewijania
+
+                nextBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        nextSlide();
+                        stopSlideShow(); // Zatrzymanie automatycznego przewijania przy ręcznym kliknięciu
+                        startSlideShow(); // Restart automatycznego przewijania po kliknięciu
                     });
                 });
 
-                // Pobierz indeks klikniętego zdjęcia z atrybutu 'data-index'
-                const clickedIndex = parseInt(slide.getAttribute('data-index'));
-
-                // Logowanie wartości dla debugowania
-                console.log("Clicked image index:", clickedIndex);
-                console.log("Image list:", imageList);
-
-                // Uruchomienie Fancyboxa z całą listą zdjęć i wskazanie, od którego zdjęcia zacząć
-                $.fancybox.open(imageList, {
-                    loop: true,  // Pozwala na przewijanie w kółko
-                    thumbs: {
-                        autoStart: true
-                    },
-                    index: currentSlide  // Otwórz FancyBox od klikniętego zdjęcia
+                prevBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        prevSlide();
+                        stopSlideShow(); // Zatrzymanie automatycznego przewijania przy ręcznym kliknięciu
+                        startSlideShow(); // Restart automatycznego przewijania po kliknięciu
+                    });
                 });
-            });
-        });
-    }
 
-    setupSlider('interior-slider', 'interior-controls');
-    setupSlider('breakfast-slider', 'breakfast-controls');
-});
+                // Funkcja do otwierania aktualnego zdjęcia w fancyboxie z możliwością przewijania
+                slides.forEach((slide, index) => {
+                    slide.setAttribute('data-index', index);  // Przypisanie indeksu do każdego zdjęcia
+                    slide.addEventListener('click', function(event) {
+                        event.preventDefault();  // Zatrzymanie domyślnej akcji linków lub przycisków
+
+                        // Stwórz listę zdjęć do przekazania do Fancyboxa
+                        const imageList = [];
+                        slides.forEach((slide, i) => {
+                            imageList.push({
+                                src: slide.parentElement.href,  // Pobranie href z elementu <a> nadrzędnego
+                                opts: {
+                                    caption: slide.alt || '',
+                                    thumb: slide.parentElement.href
+                                }
+                            });
+                        });
+
+                        // Pobierz indeks klikniętego zdjęcia z atrybutu 'data-index'
+                        const clickedIndex = parseInt(slide.getAttribute('data-index'));
+
+                        // Logowanie wartości dla debugowania
+                        console.log("Clicked image index:", clickedIndex);
+                        console.log("Image list:", imageList);
+
+                        // Uruchomienie Fancyboxa z całą listą zdjęć i wskazanie, od którego zdjęcia zacząć
+                        $.fancybox.open(imageList, {
+                            loop: true,  // Pozwala na przewijanie w kółko
+                            thumbs: {
+                                autoStart: true
+                            },
+                            index: currentSlide  // Otwórz FancyBox od klikniętego zdjęcia
+                        });
+                    });
+                });
+            }
+
+            setupSlider('interior-slider', 'interior-controls');
+            setupSlider('breakfast-slider', 'breakfast-controls');
+        });
 
         </script>
-        
-        
         
         <script>
             $(document).ready(function(){
@@ -286,7 +284,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     var target = this.hash;
                     var $target = $(target);
             
-                    // Ustaw wartość offsetu (np. 50px)
+                    // wartość offsetu (np. 50px)
                     var offset = 150;
                     
                     $('html, body').stop().animate({
@@ -297,39 +295,38 @@ document.addEventListener('DOMContentLoaded', function() {
             </script>
             
 
-         <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navItems = document.querySelector('.nav-items');
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const menuToggle = document.querySelector('.menu-toggle');
+                const navItems = document.querySelector('.nav-items');
 
-    // Funkcja do przełączenia menu
-    function toggleMenu() {
-        if (navItems.classList.contains('active')) {
-            // Przewiń do wysokości obecnej
-            navItems.style.height = `${navItems.scrollHeight}px`;
-            // Poczekaj na kończenie animacji
-            requestAnimationFrame(() => {
-                navItems.style.height = '0';
-                // Usuń klasę aktywności po zakończeniu animacji
-                setTimeout(() => navItems.classList.remove('active'), 300);
+                // Funkcja do przełączenia menu
+                function toggleMenu() {
+                    if (navItems.classList.contains('active')) {
+                        // Przewiń do wysokości obecnej
+                        navItems.style.height = `${navItems.scrollHeight}px`;
+                        // Poczekaj na kończenie animacji
+                        requestAnimationFrame(() => {
+                            navItems.style.height = '0';
+                            // Usuń klasę aktywności po zakończeniu animacji
+                            setTimeout(() => navItems.classList.remove('active'), 300);
+                        });
+                    } else {
+                        // Dodaj klasę aktywności i ustaw wysokość na automatyczną
+                        navItems.classList.add('active');
+                        navItems.style.height = 'auto';
+                        // Resetuj wysokość na bazową wartość
+                        const height = navItems.scrollHeight + 'px';
+                        navItems.style.height = '0';
+                        requestAnimationFrame(() => {
+                            navItems.style.height = height;
+                        });
+                    }
+                }
+
+                // Dodaj nasłuchiwacz kliknięć do przycisku menu
+                menuToggle.addEventListener('click', toggleMenu);
             });
-        } else {
-            // Dodaj klasę aktywności i ustaw wysokość na automatyczną
-            navItems.classList.add('active');
-            navItems.style.height = 'auto';
-            // Resetuj wysokość na bazową wartość
-            const height = navItems.scrollHeight + 'px';
-            navItems.style.height = '0';
-            requestAnimationFrame(() => {
-                navItems.style.height = height;
-            });
-        }
-    }
-
-    // Dodaj nasłuchiwacz kliknięć do przycisku menu
-    menuToggle.addEventListener('click', toggleMenu);
-});
-
         </script>
             
 
