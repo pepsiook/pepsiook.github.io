@@ -15,6 +15,10 @@
     <!-- Fancybox JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/16.1.3/smooth-scroll.polyfills.min.js"></script>
+    
+
+
 </head>
 <body>
     <!-- nagłówek -->
@@ -158,64 +162,126 @@
     </footer>
 
     <script>
-            document.addEventListener('DOMContentLoaded', function() {
-            function setupSlider(sliderClass, controlsClass) {
-            const slides = document.querySelectorAll(`.${sliderClass} .slide-image`);
-            const prevBtns = document.querySelectorAll(`.${controlsClass} .prev-slide`);
-            const nextBtns = document.querySelectorAll(`.${controlsClass} .next-slide`);
-            let currentSlide = 0;
-            let slideInterval;
+document.addEventListener('DOMContentLoaded', function() {
+    function setupSlider(sliderClass, controlsClass) {
+        const slides = document.querySelectorAll(`.${sliderClass} .slide-image`);
+        const prevBtns = document.querySelectorAll(`.${controlsClass} .prev-slide`);
+        const nextBtns = document.querySelectorAll(`.${controlsClass} .next-slide`);
+        let currentSlide = 0;
+        let slideInterval;
 
-            function showSlide() {
-                slides.forEach((slide, index) => {
-                    slide.classList.remove('active');
-                    if (index === currentSlide) {
-                        slide.classList.add('active');
-                    }
-                });
-            }
-
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % slides.length;
-                showSlide();
-            }
-
-            function prevSlide() {
-                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-                showSlide();
-            }
-
-            function startSlideShow() {
-                slideInterval = setInterval(nextSlide, 3000); // Zmiana co 3 sekundy
-            }
-
-            function stopSlideShow() {
-                clearInterval(slideInterval);
-            }
-
-            showSlide();
-            startSlideShow();
-
-            nextBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    nextSlide();
-                    stopSlideShow(); // Zatrzymanie automatycznego przewijania przy ręcznym kliknięciu
-                    startSlideShow(); // Restart automatycznego przewijania po kliknięciu
-                });
-            });
-
-            prevBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    prevSlide();
-                    stopSlideShow(); // Zatrzymanie automatycznego przewijania przy ręcznym kliknięciu
-                    startSlideShow(); // Restart automatycznego przewijania po kliknięciu
-                });
+        function showSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                }
             });
         }
 
-        setupSlider('interior-slider', 'interior-controls');
-        setupSlider('breakfast-slider', 'breakfast-controls');
-    });
-    </script>
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide();
+        }
+
+        function startSlideShow() {
+            slideInterval = setInterval(nextSlide, 3000); // Zmiana co 3 sekundy
+        }
+
+        function stopSlideShow() {
+            clearInterval(slideInterval);
+        }
+
+        // Inicjalizacja slidera
+        showSlide();
+        startSlideShow(); // Rozpoczęcie automatycznego przewijania
+
+        nextBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                nextSlide();
+                stopSlideShow(); // Zatrzymanie automatycznego przewijania przy ręcznym kliknięciu
+                startSlideShow(); // Restart automatycznego przewijania po kliknięciu
+            });
+        });
+
+        prevBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                prevSlide();
+                stopSlideShow(); // Zatrzymanie automatycznego przewijania przy ręcznym kliknięciu
+                startSlideShow(); // Restart automatycznego przewijania po kliknięciu
+            });
+        });
+
+        // Funkcja do otwierania aktualnego zdjęcia w fancyboxie z możliwością przewijania
+        slides.forEach((slide, index) => {
+            slide.setAttribute('data-index', index);  // Przypisanie indeksu do każdego zdjęcia
+            slide.addEventListener('click', function(event) {
+                event.preventDefault();  // Zatrzymanie domyślnej akcji linków lub przycisków
+
+                // Stwórz listę zdjęć do przekazania do Fancyboxa
+                const imageList = [];
+                slides.forEach((slide, i) => {
+                    imageList.push({
+                        src: slide.parentElement.href,  // Pobranie href z elementu <a> nadrzędnego
+                        opts: {
+                            caption: slide.alt || '',
+                            thumb: slide.parentElement.href
+                        }
+                    });
+                });
+
+                // Pobierz indeks klikniętego zdjęcia z atrybutu 'data-index'
+                const clickedIndex = parseInt(slide.getAttribute('data-index'));
+
+                // Logowanie wartości dla debugowania
+                console.log("Clicked image index:", clickedIndex);
+                console.log("Image list:", imageList);
+
+                // Uruchomienie Fancyboxa z całą listą zdjęć i wskazanie, od którego zdjęcia zacząć
+                $.fancybox.open(imageList, {
+                    loop: true,  // Pozwala na przewijanie w kółko
+                    thumbs: {
+                        autoStart: true
+                    },
+                    index: currentSlide  // Otwórz FancyBox od klikniętego zdjęcia
+                });
+            });
+        });
+    }
+
+    setupSlider('interior-slider', 'interior-controls');
+    setupSlider('breakfast-slider', 'breakfast-controls');
+});
+
+        </script>
+        
+        
+        
+        <script>
+            $(document).ready(function(){
+                $('a[href^="#"]').on('click', function(event) {
+                    event.preventDefault();
+                    
+                    var target = this.hash;
+                    var $target = $(target);
+            
+                    // Ustaw wartość offsetu (np. 50px)
+                    var offset = 150;
+                    
+                    $('html, body').stop().animate({
+                        'scrollTop': $target.offset().top - offset
+                    }, 1000, 'swing');
+                });
+            });
+            </script>
+            
+            
+
+
 </body>
 </html>
